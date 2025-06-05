@@ -22,7 +22,7 @@ def standardize_column_names_stock(df):
         '可用余额' : 'valid_quantity',
         '昨夜拥股': 'pre_quantity',
         '最新价' : 'price',
-        '当日涨幅': 'return'
+        '当日涨幅': 'pct_chg'
     }
     # 处理列名：先转小写
     df.columns = df.columns.str.lower()
@@ -41,7 +41,7 @@ def standardize_column_names_stock(df):
     columns_to_keep = [col for col in df.columns if col in standardized_columns]
     df = df[columns_to_keep]
     # 定义固定的列顺序
-    fixed_columns = ['code','price','return','mkt_value','mkt_name','chi_name','quantity','unit_cost','cost','profit','valid_quantity','pre_quantity']
+    fixed_columns = ['code','price','pct_chg','mkt_value','mkt_name','chi_name','quantity','unit_cost','cost','profit','valid_quantity','pre_quantity']
     # 只选择实际存在的列，并按固定顺序排列
     existing_columns = [col for col in fixed_columns if col in df.columns]
     df = df[existing_columns]
@@ -64,7 +64,7 @@ def standardize_column_names_future(df):
         '合约价值' : 'mkt_value',
         '持仓盈亏' : 'profit',
         '最新价' : 'price',
-        '当日涨幅': 'return'
+        '当日涨幅': 'pct_chg'
     }
     # 处理列名：先转小写
     df.columns = df.columns.str.lower()
@@ -83,7 +83,7 @@ def standardize_column_names_future(df):
     columns_to_keep = [col for col in df.columns if col in standardized_columns]
     df = df[columns_to_keep]
     # 定义固定的列顺序
-    fixed_columns = ['code','price','return','mkt_value','mkt_code','direction','chi_name','quantity','pre_quantity','today_quantity','unit_cost','cost','profit']
+    fixed_columns = ['code','price','pct_chg','mkt_value','mkt_code','direction','chi_name','quantity','pre_quantity','today_quantity','unit_cost','cost','profit']
     # 只选择实际存在的列，并按固定顺序排列
     existing_columns = [col for col in fixed_columns if col in df.columns]
     df = df[existing_columns]

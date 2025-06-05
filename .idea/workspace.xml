@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fae46215-f168-4669-9b37-39d3f8ae1572" name="Changes" comment="" />
+    <list default="true" id="fae46215-f168-4669-9b37-39d3f8ae1572" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/product_to_sql.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/product_to_sql.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/running_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/running_main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,15 +34,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.product_to_sql.executor": "Run",
-    "Python.running_main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/product_to_sql"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.product_to_sql.executor&quot;: &quot;Run&quot;,
+    &quot;Python.running_main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/product_to_sql&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python.running_main">
     <configuration name="product_to_sql" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="product_to_sql" />
@@ -92,7 +99,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-5b207ade9991-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.17890.14" />
+        <option value="bundled-python-sdk-babbdf50b680-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.15989.155" />
       </set>
     </attachedChunks>
   </component>

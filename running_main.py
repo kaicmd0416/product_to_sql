@@ -123,4 +123,4 @@ def renr_running_main():
                 tsql4=renrProduct_to_sql(True)
                 tsql4.InfoHolding_saving()
 if __name__ == '__main__':
-    renr_running_main()
+    rr_running_main()
