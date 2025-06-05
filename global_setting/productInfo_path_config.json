@@ -4,15 +4,15 @@
             "mode": "sql"
         },
         "database": {
-            "database2": {
+            "database1": {
                 "host": "rm-bp1o6we7s3o1h76x1to.mysql.rds.aliyuncs.com",
                 "port": 3306,
-                "user": "kai",
+                "user": "DBA",
                 "password": "Abcd1234#",
                 "database": "data_prepared",
                 "charset": "utf8mb4"
             },
-            "database1": {
+            "database2": {
                 "host": "localhost",
                 "port": 3306,
                 "user": "root",
@@ -35,7 +35,7 @@
         },
         {
             "folder_type": "input_folder_xy",
-            "path": "OneDrive\\Data_prepared_test\\data_product\\product_info\\宣夜惠盈1号",
+            "path": "Info",
             "disk": "D"
         },
         {
