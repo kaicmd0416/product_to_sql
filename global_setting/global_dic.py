@@ -102,8 +102,15 @@ def get(key):
     data_source = global_dic.get('components', {}).get('data_source', {})
     mode = data_source.get('mode', 'local')
     
+    # 如果没有folder_type配置，返回SQL语句
+    if 'folder_type' not in config:
+        if config.get('sql_sheet'):
+            table_name = config['sql_sheet']
+            return f"SELECT * FROM {table_name}"
+        return None
+    
+    # SQL模式且有sql_sheet配置，返回查询语句
     if mode == 'sql' and config.get('sql_sheet'):
-        # SQL模式且有sql_sheet配置，返回查询语句
         table_name = config['sql_sheet']
         return f"SELECT * FROM {table_name}"
     else:

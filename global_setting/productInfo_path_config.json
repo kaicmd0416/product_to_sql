@@ -1,10 +1,10 @@
 {
     "components": {
         "data_source": {
-            "mode": "local"
+            "mode": "sql"
         },
         "database": {
-            "database1": {
+            "database2": {
                 "host": "rm-bp1o6we7s3o1h76x1to.mysql.rds.aliyuncs.com",
                 "port": 3306,
                 "user": "kai",
@@ -12,7 +12,7 @@
                 "database": "data_prepared",
                 "charset": "utf8mb4"
             },
-            "database2": {
+            "database1": {
                 "host": "localhost",
                 "port": 3306,
                 "user": "root",
@@ -30,12 +30,12 @@
         },
         {
             "folder_type": "input_folder_renrui",
-            "path": "Info",
+            "path": "OneDrive\\Data_prepared_test\\data_product\\product_info\\仁睿价值精选1号",
             "disk": "D"
         },
         {
             "folder_type": "input_folder_xy",
-            "path": "Info",
+            "path": "OneDrive\\Data_prepared_test\\data_product\\product_info\\宣夜惠盈1号",
             "disk": "D"
         },
         {
@@ -67,14 +67,25 @@
         },
         {
             "data_type": "stock_renrui",
-            "folder_name": "Stock",
+            "folder_name": "stock",
             "folder_type": "input_folder_renrui"
         },
         {
             "data_type": "config_sql",
             "folder_name": "productInfo_sql.yaml",
             "folder_type": "config"
+        },
+        {
+            "data_type": "output_stock",
+            "sql_sheet": "stockholding"
+        },
+        {
+            "data_type": "output_prodinfo",
+            "sql_sheet": "productinfo"
+        },
+        {
+            "data_type": "output_future",
+            "sql_sheet": "futureholding"
         }
-
     ]
 } 

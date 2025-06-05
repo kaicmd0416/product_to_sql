@@ -51,9 +51,11 @@ def standardize_column_names_future(df):
     column_mapping = {
         # 代码相关
         '合约代码': 'code',
+        '合约':'code',
         '市场代码': 'mkt_code',
         '合约名称': 'chi_name',
         '多空' : 'direction',
+        '买卖':'direction',
         '总持仓' : 'quantity',
         '昨仓' : 'pre_quantity',
         '今仓' : 'today_quantity',
@@ -139,7 +141,7 @@ class rrProduct_to_sql:
         date1 = file_date_list[-1]
         date1 = gt.strdate_transfer(date1)
         today = datetime.today()
-        current_time=datetime.now()
+        current_time=datetime.now().strftime('%Y-%m-%d %H:%M')
         today = gt.strdate_transfer(today)
         if date1 != today:
             print('positionDetail最新更新日期为:' + str(date1))
@@ -170,7 +172,7 @@ class rrProduct_to_sql:
         date1 = file_date_list[-1]
         date1 = gt.strdate_transfer(date1)
         today = datetime.today()
-        current_time=datetime.now()
+        current_time=datetime.now().strftime('%Y-%m-%d %H:%M')
         today = gt.strdate_transfer(today)
         if date1 != today:
             print('positionDetail最新更新日期为:' + str(date1))
@@ -201,7 +203,7 @@ class rrProduct_to_sql:
         date1 = file_date_list[-1]
         date1 = gt.strdate_transfer(date1)
         today = datetime.today()
-        current_time=datetime.now()
+        current_time=datetime.now().strftime('%Y-%m-%d %H:%M')
         today = gt.strdate_transfer(today)
         if date1 != today:
             print('Account最新更新日期为:' + str(date1))
@@ -232,7 +234,186 @@ class rrProduct_to_sql:
             self.InfoHolding_saving()
         except:
             print(self.product_type+str('产品Info入库有问题'))
-
+class xyProduct_to_sql:
+    def __init__(self,is_daily):
+        self.product_type='SGS958'
+        self.is_daily=is_daily
+    def stockHolding_saving(self):
+        inputpath=glv.get('stock_xy')
+        input_list = os.listdir(inputpath)
+        input_list = [i for i in input_list if 'PositionDetail' in i]
+        input_list.sort()
+        input_name = input_list[-1]
+        file_date_list = re.findall(r'\d{8}', input_name)
+        date1 = file_date_list[-1]
+        date1 = gt.strdate_transfer(date1)
+        today = datetime.today()
+        current_time=datetime.now().strftime('%Y-%m-%d %H:%M')
+        today = gt.strdate_transfer(today)
+        if date1 != today:
+            print('positionDetail最新更新日期为:' + str(date1))
+            raise ValueError
+        inputpath_holding = os.path.join(inputpath, input_name)
+        df = gt.readcsv(inputpath_holding)
+        df=standardize_column_names_stock(df)
+        df['valuation_date']=today
+        df['product_code']=self.product_type
+        df['update_time']=current_time
+        df=df[['valuation_date','product_code','update_time']+df.columns.tolist()[:-3]]
+        inputpath_configsql = glv.get('config_sql')
+        if self.is_daily==True:
+             sm = gt.sqlSaving_main(inputpath_configsql, 'stock')
+        else:
+            sm = gt.sqlSaving_main(inputpath_configsql, 'stock_temp')
+        sm.df_to_sql(df)
+    def futureHolding_saving(self):
+        inputpath=glv.get('future_xy')
+        input_list = os.listdir(inputpath)
+        input_list = [i for i in input_list if '持仓_' in i]
+        input_list.sort()
+        input_name = input_list[-1]
+        file_date_list = re.findall(r'\d{6}', input_name)
+        date1 = file_date_list[-1]
+        date1='20'+str(date1)
+        date1 = gt.strdate_transfer(date1)
+        today = datetime.today()
+        current_time=datetime.now().strftime('%Y-%m-%d %H:%M')
+        today = gt.strdate_transfer(today)
+        if date1 != today:
+            print('positionDetail最新更新日期为:' + str(date1))
+            raise ValueError
+        inputpath_holding = os.path.join(inputpath, input_name)
+        df = gt.readcsv(inputpath_holding)
+        df=standardize_column_names_future(df)
+        df['valuation_date']=today
+        df['product_code']=self.product_type
+        df['update_time']=current_time
+        df=df[['valuation_date','product_code','update_time']+df.columns.tolist()[:-3]]
+        def direction_processing(x):
+            if x=='买':
+                return '多'
+            else:
+                return '空'
+        df['direction']=df['direction'].apply(lambda x: direction_processing(x))
+        # Clean profit values by removing commas
+        df['profit'] = df['profit'].str.replace(',', '')
+        inputpath_configsql = glv.get('config_sql')
+        if self.is_daily==True:
+             sm = gt.sqlSaving_main(inputpath_configsql, 'future')
+        else:
+            sm = gt.sqlSaving_main(inputpath_configsql, 'future_temp')
+        sm.df_to_sql(df)
+    def InfoHolding_saving(self):
+        inputpath=glv.get('stock_xy')
+        input_list = os.listdir(inputpath)
+        input_list = [i for i in input_list if 'Account' in i]
+        input_list.sort()
+        input_name = input_list[-1]
+        file_date_list = re.findall(r'\d{8}', input_name)
+        date1 = file_date_list[-1]
+        date1 = gt.strdate_transfer(date1)
+        today = datetime.today()
+        current_time=datetime.now().strftime('%Y-%m-%d %H:%M')
+        today = gt.strdate_transfer(today)
+        if date1 != today:
+            print('Account最新更新日期为:' + str(date1))
+            raise ValueError
+        inputpath_holding = os.path.join(inputpath, input_name)
+        df = gt.readcsv(inputpath_holding)
+        df=standardize_column_names_info(df)
+        df['valuation_date']=today
+        df['product_code']=self.product_type
+        df['update_time']=current_time
+        df=df[['valuation_date','product_code','update_time']+df.columns.tolist()[:-3]]
+        inputpath_configsql = glv.get('config_sql')
+        if self.is_daily==True:
+             sm = gt.sqlSaving_main(inputpath_configsql, 'info')
+        else:
+            sm = gt.sqlSaving_main(inputpath_configsql, 'info_temp')
+        sm.df_to_sql(df)
+    def xy_sql_saving_main(self):
+        try:
+            self.stockHolding_saving()
+        except:
+            print(self.product_type+str('股票holding入库有问题'))
+        try:
+            self.futureHolding_saving()
+        except:
+            print(self.product_type+str('期货holding入库有问题'))
+        try:
+            self.InfoHolding_saving()
+        except:
+            print(self.product_type+str('产品Info入库有问题'))
+class renrProduct_to_sql:
+    def __init__(self,is_daily):
+        self.product_type='SLA626'
+        self.is_daily=is_daily
+    def stockHolding_saving(self):
+        inputpath=glv.get('stock_renrui')
+        input_list = os.listdir(inputpath)
+        input_list = [i for i in input_list if 'PositionStatics' in i]
+        input_list.sort()
+        input_name = input_list[-1]
+        file_date_list = re.findall(r'\d{8}', input_name)
+        date1 = file_date_list[-1]
+        print(date1)
+        date1 = gt.strdate_transfer(date1)
+        today = datetime.today()
+        current_time=datetime.now().strftime('%Y-%m-%d %H:%M')
+        today = gt.strdate_transfer(today)
+        if date1 != today:
+            print('positionDetail最新更新日期为:' + str(date1))
+            raise ValueError
+        inputpath_holding = os.path.join(inputpath, input_name)
+        df = gt.readcsv(inputpath_holding)
+        df=standardize_column_names_stock(df)
+        df['valuation_date']=today
+        df['product_code']=self.product_type
+        df['update_time']=current_time
+        df=df[['valuation_date','product_code','update_time']+df.columns.tolist()[:-3]]
+        inputpath_configsql = glv.get('config_sql')
+        if self.is_daily==True:
+             sm = gt.sqlSaving_main(inputpath_configsql, 'stock')
+        else:
+            sm = gt.sqlSaving_main(inputpath_configsql, 'stock_temp')
+        sm.df_to_sql(df)
+    def InfoHolding_saving(self):
+        inputpath=glv.get('stock_renrui')
+        input_list = os.listdir(inputpath)
+        input_list = [i for i in input_list if 'Account' in i]
+        input_list.sort()
+        input_name = input_list[-1]
+        file_date_list = re.findall(r'\d{8}', input_name)
+        date1 = file_date_list[-1]
+        date1 = gt.strdate_transfer(date1)
+        today = datetime.today()
+        current_time=datetime.now().strftime('%Y-%m-%d %H:%M')
+        today = gt.strdate_transfer(today)
+        if date1 != today:
+            print('Account最新更新日期为:' + str(date1))
+            raise ValueError
+        inputpath_holding = os.path.join(inputpath, input_name)
+        df = gt.readcsv(inputpath_holding)
+        df=standardize_column_names_info(df)
+        df['valuation_date']=today
+        df['product_code']=self.product_type
+        df['update_time']=current_time
+        df=df[['valuation_date','product_code','update_time']+df.columns.tolist()[:-3]]
+        inputpath_configsql = glv.get('config_sql')
+        if self.is_daily==True:
+             sm = gt.sqlSaving_main(inputpath_configsql, 'info')
+        else:
+            sm = gt.sqlSaving_main(inputpath_configsql, 'info_temp')
+        sm.df_to_sql(df)
+    def renrui_sql_saving_main(self):
+        try:
+            self.stockHolding_saving()
+        except:
+            print(self.product_type+str('股票holding入库有问题'))
+        try:
+            self.InfoHolding_saving()
+        except:
+            print(self.product_type+str('产品Info入库有问题'))
 if __name__ == '__main__':
-    rts=rrProduct_to_sql('SNY426',False)
-    rts.rr_sql_saving_main()
+    rts=renrProduct_to_sql(False)
+    rts.renrui_sql_saving_main()
