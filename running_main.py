@@ -44,9 +44,9 @@ def rr_running_main():
     product_code=['SSS044','SNY426']
     for product in product_code:
         if current_time.hour < 9 or (current_time.hour == 9 and current_time.minute <= 15):
-            status_stock = temptable_manage(product, 'stock')
-            status_future = temptable_manage(product, 'future')
-            stuatus_prodinfo = temptable_manage(product, 'prodinfo')
+            status_stock = temptable_manage('stock', product)
+            status_future = temptable_manage('future', product)
+            stuatus_prodinfo = temptable_manage('prodinfo', product)
             if status_stock=='not_exist':
                 gt.table_manager(config_path,'stockholding_temp')
             if status_future=='not_exist':
@@ -56,9 +56,9 @@ def rr_running_main():
         tsql=rrProduct_to_sql(product,False)
         tsql.rr_sql_saving_main()
         if current_time.hour > 15 or (current_time.hour == 15 and current_time.minute >= 30):
-            status_stock=dailydata_getting(product,'stock')
-            status_future=dailydata_getting(product,'future')
-            stuatus_prodinfo=dailydata_getting(product,'prodinfo')
+            status_stock=dailydata_getting('stock', product)
+            status_future=dailydata_getting('future', product)
+            stuatus_prodinfo=dailydata_getting('prodinfo', product)
             if status_stock=='not_exist':
                 tsql2=rrProduct_to_sql(product,True)
                 tsql2.stockHolding_saving()
@@ -73,9 +73,9 @@ def xy_running_main():
     product_code=['SGS958']
     for product in product_code:
         if current_time.hour < 9 or (current_time.hour == 9 and current_time.minute <= 15):
-            status_stock = temptable_manage(product, 'stock')
-            status_future = temptable_manage(product, 'future')
-            stuatus_prodinfo = temptable_manage(product, 'prodinfo')
+            status_stock = temptable_manage('stock', product)
+            status_future = temptable_manage('future', product)
+            stuatus_prodinfo = temptable_manage('prodinfo', product)
             if status_stock=='not_exist':
                 gt.table_manager(config_path,'stockholding_temp')
             if status_future=='not_exist':
@@ -85,9 +85,9 @@ def xy_running_main():
         tsql=xyProduct_to_sql(False)
         tsql.xy_sql_saving_main()
         if current_time.hour > 15 or (current_time.hour == 15 and current_time.minute >= 30):
-            status_stock=dailydata_getting(product,'stock')
-            status_future=dailydata_getting(product,'future')
-            stuatus_prodinfo=dailydata_getting(product,'prodinfo')
+            status_stock=dailydata_getting('stock', product)
+            status_future=dailydata_getting('future', product)
+            stuatus_prodinfo=dailydata_getting('prodinfo', product)
             if status_stock=='not_exist':
                 tsql2=xyProduct_to_sql(True)
                 tsql2.stockHolding_saving()
@@ -102,20 +102,17 @@ def renr_running_main():
     product_code=['SLA626']
     for product in product_code:
         if current_time.hour < 9 or (current_time.hour == 9 and current_time.minute <= 15):
-            status_stock = temptable_manage(product, 'stock')
-            status_future = temptable_manage(product, 'future')
-            stuatus_prodinfo = temptable_manage(product, 'prodinfo')
+            status_stock = temptable_manage('stock', product)
+            stuatus_prodinfo = temptable_manage('prodinfo', product)
             if status_stock=='not_exist':
                 gt.table_manager(config_path,'stockholding_temp')
-            if status_future=='not_exist':
-                gt.table_manager(config_path,'futureholding_temp')
             if stuatus_prodinfo =='not_exist':
                 gt.table_manager(config_path,'productinfo_temp')
         tsql=renrProduct_to_sql(False)
         tsql.renrui_sql_saving_main()
         if current_time.hour > 15 or (current_time.hour == 15 and current_time.minute >= 30):
-            status_stock=dailydata_getting(product,'stock')
-            stuatus_prodinfo=dailydata_getting(product,'prodinfo')
+            status_stock=dailydata_getting('stock', product)
+            stuatus_prodinfo=dailydata_getting('prodinfo', product)
             if status_stock=='not_exist':
                 tsql2=renrProduct_to_sql(True)
                 tsql2.stockHolding_saving()
@@ -123,4 +120,4 @@ def renr_running_main():
                 tsql4=renrProduct_to_sql(True)
                 tsql4.InfoHolding_saving()
 if __name__ == '__main__':
-    rr_running_main()
+    xy_running_main()
