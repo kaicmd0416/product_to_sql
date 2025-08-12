@@ -1,0 +1,119 @@
+{
+    "components": {
+        "data_source": {
+            "mode": "sql"
+        },
+        "database": {
+            "database1": {
+                "host": "rm-bp1o6we7s3o1h76x1to.mysql.rds.aliyuncs.com",
+                "port": 3306,
+                "user": "DBA",
+                "password": "Abcd1234#",
+                "database": "data_prepared",
+                "charset": "utf8mb4"
+            },
+            "database2": {
+                "host": "localhost",
+                "port": 3306,
+                "user": "root",
+                "password": "root",
+                "database": "data_prepared",
+                "charset": "utf8mb4"
+            }
+        }
+    },
+    "main_folder": [
+        {
+            "folder_type": "input_folder_rr",
+            "path": "Data_prepared_test\\data_product\\product_info\\瑞锐",
+            "disk": "D:"
+        },
+        {
+            "folder_type": "input_folder_renrui",
+            "path": "Info",
+            "disk": "D"
+        },
+        {
+            "folder_type": "input_folder_xy",
+            "path": "Info",
+            "disk": "D"
+        },
+        {
+            "folder_type": "config",
+            "path": "product_to_sql\\global_setting",
+            "disk": "D"
+        },
+        {
+            "folder_type": "input_folder_xy_future",
+            "path": "CTP_XY",
+            "disk": "D"
+        }
+        ,
+        {
+            "folder_type": "input_folder_renr_future",
+            "path": "CTP_RenR",
+            "disk": "D"
+        }
+    ],
+    "sub_folder": [
+        {
+            "data_type": "stock_rr",
+            "folder_name": "Stock",
+            "folder_type": "input_folder_rr"
+        },
+        {
+            "data_type": "future_rr",
+            "folder_name": "Future",
+            "folder_type": "input_folder_rr"
+        },
+        {
+            "data_type": "stock_xy",
+            "folder_name": "Stock",
+            "folder_type": "input_folder_xy"
+        },
+        {
+            "data_type": "future_xy",
+            "folder_name": "GLDH5000602925",
+            "folder_type": "input_folder_xy_future"
+        },
+        {
+            "data_type": "stock_renrui",
+            "folder_name": "stock",
+            "folder_type": "input_folder_renrui"
+        },
+        {
+            "data_type": "future_renrui",
+            "folder_name": "GLDH5000603056",
+            "folder_type": "input_folder_renr_future"
+        },
+        {
+            "data_type": "config_sql",
+            "folder_name": "productInfo_sql.yaml",
+            "folder_type": "config"
+        },
+        {
+            "data_type": "output_stock",
+            "sql_sheet": "stockholding"
+        },
+        {
+            "data_type": "output_prodinfo",
+            "sql_sheet": "productinfo"
+        },
+        {
+            "data_type": "output_future",
+            "sql_sheet": "futureholding"
+        },
+        {
+            "data_type": "output_future_temp",
+            "sql_sheet": "futureholding_temp"
+        },
+        {
+            "data_type": "output_stock_temp",
+            "sql_sheet": "stockholding_temp"
+        },
+        {
+            "data_type": "output_prodinfo_temp",
+            "sql_sheet": "productinfo_temp"
+        }
+    ]
+} 

@@ -1,0 +1,55 @@
+stock_temp:
+    table_name: "stockHolding_temp"
+    db_url: "mysql+pymysql://DBA:Abcd1234#@rm-bp1o6we7s3o1h76x1to.mysql.rds.aliyuncs.com:3306/data_prepared?autocommit=True "
+    chunk_size: 20000
+    workers: 4
+    private_keys:
+      - "valuation_date"
+      - 'code'
+      - 'product_code'
+info_temp:
+    table_name: "productInfo_temp"
+    db_url: "mysql+pymysql://DBA:Abcd1234#@rm-bp1o6we7s3o1h76x1to.mysql.rds.aliyuncs.com:3306/data_prepared?autocommit=True "
+    chunk_size: 20000
+    workers: 4
+    private_keys:
+      - "valuation_date"
+      - 'product_code'
+future_temp:
+    table_name: "futureHolding_temp"
+    db_url: "mysql+pymysql://DBA:Abcd1234#@rm-bp1o6we7s3o1h76x1to.mysql.rds.aliyuncs.com:3306/data_prepared?autocommit=True "
+    chunk_size: 20000
+    workers: 4
+    private_keys:
+      - "valuation_date"
+      - 'code'
+      - 'product_code'
+stock:
+    table_name: "stockHolding"
+    db_url: "mysql+pymysql://DBA:Abcd1234#@rm-bp1o6we7s3o1h76x1to.mysql.rds.aliyuncs.com:3306/data_prepared?autocommit=True "
+    chunk_size: 20000
+    workers: 4
+    private_keys:
+      - "valuation_date"
+      - 'code'
+      - 'product_code'
+info:
+    table_name: "productInfo"
+    db_url: "mysql+pymysql://DBA:Abcd1234#@rm-bp1o6we7s3o1h76x1to.mysql.rds.aliyuncs.com:3306/data_prepared?autocommit=True "
+    chunk_size: 20000
+    workers: 4
+    private_keys:
+      - "valuation_date"
+      - 'product_code'
+future:
+    table_name: "futureHolding"
+    db_url: "mysql+pymysql://DBA:Abcd1234#@rm-bp1o6we7s3o1h76x1to.mysql.rds.aliyuncs.com:3306/data_prepared?autocommit=True "
+    chunk_size: 20000
+    workers: 4
+    private_keys:
+      - "valuation_date"
+      - 'code'
+      - 'product_code'
+      - 'direction'
+
+
