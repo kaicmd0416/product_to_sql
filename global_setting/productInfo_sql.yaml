@@ -1,49 +1,123 @@
 stock_temp:
     table_name: "stockHolding_temp"
-    db_url: "mysql+pymysql://DBA:Abcd1234#@rm-bp1o6we7s3o1h76x1to.mysql.rds.aliyuncs.com:3306/data_prepared?autocommit=True "
+    db_url: "mysql+pymysql://wc:Abcd1234#@rm-bp1o6we7s3o1h76x1to.mysql.rds.aliyuncs.com:3306/data_prepared_new?autocommit=True "
     chunk_size: 20000
     workers: 4
     private_keys:
       - "valuation_date"
       - 'code'
       - 'product_code'
+    schema:
+      valuation_date: { type: String, length: 50 }
+      code: { type: String, length: 50 }
+      product_code: { type: String, length: 50 }
+      price: { type: Float }
+      pct_chg: { type: Float }
+      mkt_value: { type: Float }
+      quantity: { type: Float }
+      unit_cost: { type: Float }
+      cost: { type: Float }
+      profit: { type: Float }
+      valid_quantity: { type: Float }
+      pre_quantity: { type: Float }
+      mkt_name: { type: String, length: 50 }
+      chi_name: { type: String, length: 50 }
+      update_time: { type: String, length: 50 }
 info_temp:
     table_name: "productInfo_temp"
-    db_url: "mysql+pymysql://DBA:Abcd1234#@rm-bp1o6we7s3o1h76x1to.mysql.rds.aliyuncs.com:3306/data_prepared?autocommit=True "
+    db_url: "mysql+pymysql://wc:Abcd1234#@rm-bp1o6we7s3o1h76x1to.mysql.rds.aliyuncs.com:3306/data_prepared_new?autocommit=True "
     chunk_size: 20000
     workers: 4
     private_keys:
       - "valuation_date"
       - 'product_code'
+    schema:
+      valuation_date: { type: String, length: 50 }
+      product_code: { type: String, length: 50 }
+      account: { type: Float }
+      asset_value: { type: Float }
+      mkt_value: { type: Float }
+      stock_mkt_value: { type: Float }
+      bond_mkt_value: { type: Float }
+      fund_mkt_value: { type: Float }
+      repurchase_mkt_value: { type: Float }
+      net_value: { type: Float }
+      profit: { type: Float }
+      update_time: { type: String, length: 50 }
 future_temp:
     table_name: "futureHolding_temp"
-    db_url: "mysql+pymysql://DBA:Abcd1234#@rm-bp1o6we7s3o1h76x1to.mysql.rds.aliyuncs.com:3306/data_prepared?autocommit=True "
+    db_url: "mysql+pymysql://wc:Abcd1234#@rm-bp1o6we7s3o1h76x1to.mysql.rds.aliyuncs.com:3306/data_prepared_new?autocommit=True "
     chunk_size: 20000
     workers: 4
     private_keys:
       - "valuation_date"
       - 'code'
       - 'product_code'
+    schema:
+      valuation_date: { type: String, length: 50 }
+      code: { type: String, length: 50 }
+      product_code: { type: String, length: 50 }
+      pct_chg: { type: Float }
+      mkt_value: { type: Float }
+      direction: { type: String, length: 50 }
+      quantity: { type: Float }
+      unit_cost: { type: Float }
+      cost: { type: Float }
+      profit: { type: Float }
+      today_quantity: { type: Float }
+      pre_quantity: { type: Float }
+      mkt_code: { type: String, length: 50 }
+      chi_name: { type: String, length: 50 }
+      update_time: { type: String, length: 50 }
 stock:
     table_name: "stockHolding"
-    db_url: "mysql+pymysql://DBA:Abcd1234#@rm-bp1o6we7s3o1h76x1to.mysql.rds.aliyuncs.com:3306/data_prepared?autocommit=True "
+    db_url: "mysql+pymysql://wc:Abcd1234#@rm-bp1o6we7s3o1h76x1to.mysql.rds.aliyuncs.com:3306/data_prepared_new?autocommit=True "
     chunk_size: 20000
     workers: 4
     private_keys:
       - "valuation_date"
       - 'code'
       - 'product_code'
+    schema:
+      valuation_date: { type: String, length: 50 }
+      code: { type: String, length: 50 }
+      product_code: { type: String, length: 50 }
+      price: { type: Float }
+      pct_chg: { type: Float }
+      mkt_value: { type: Float }
+      quantity: { type: Float }
+      unit_cost: { type: Float }
+      cost: { type: Float }
+      profit: { type: Float }
+      valid_quantity: { type: Float }
+      pre_quantity: { type: Float }
+      mkt_name: { type: String, length: 50 }
+      chi_name: { type: String, length: 50 }
+      update_time: { type: String, length: 50 }
 info:
     table_name: "productInfo"
-    db_url: "mysql+pymysql://DBA:Abcd1234#@rm-bp1o6we7s3o1h76x1to.mysql.rds.aliyuncs.com:3306/data_prepared?autocommit=True "
+    db_url: "mysql+pymysql://wc:Abcd1234#@rm-bp1o6we7s3o1h76x1to.mysql.rds.aliyuncs.com:3306/data_prepared_new?autocommit=True "
     chunk_size: 20000
     workers: 4
     private_keys:
       - "valuation_date"
       - 'product_code'
+    schema:
+      valuation_date: { type: String, length: 50 }
+      product_code: { type: String, length: 50 }
+      account: { type: Float }
+      asset_value: { type: Float }
+      mkt_value: { type: Float }
+      stock_mkt_value: { type: Float }
+      bond_mkt_value: { type: Float }
+      fund_mkt_value: { type: Float }
+      repurchase_mkt_value: { type: Float }
+      net_value: { type: Float }
+      profit: { type: Float }
+      update_time: { type: String, length: 50 }
 future:
     table_name: "futureHolding"
-    db_url: "mysql+pymysql://DBA:Abcd1234#@rm-bp1o6we7s3o1h76x1to.mysql.rds.aliyuncs.com:3306/data_prepared?autocommit=True "
+    db_url: "mysql+pymysql://wc:Abcd1234#@rm-bp1o6we7s3o1h76x1to.mysql.rds.aliyuncs.com:3306/data_prepared_new?autocommit=True "
     chunk_size: 20000
     workers: 4
     private_keys:
@@ -51,5 +125,22 @@ future:
       - 'code'
       - 'product_code'
       - 'direction'
+    schema:
+      valuation_date: { type: String, length: 50 }
+      code: { type: String, length: 50 }
+      product_code: { type: String, length: 50 }
+      price: { type: Float }
+      pct_chg: { type: Float }
+      mkt_value: { type: Float }
+      direction: { type: String, length: 50 }
+      quantity: { type: Float }
+      unit_cost: { type: Float }
+      cost: { type: Float }
+      profit: { type: Float }
+      today_quantity: { type: Float }
+      pre_quantity: { type: Float }
+      mkt_code: { type: String, length: 50 }
+      chi_name: { type: String, length: 50 }
+      update_time: { type: String, length: 50 }
 
 

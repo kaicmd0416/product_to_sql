@@ -6,7 +6,7 @@
 2. 构建完整的文件路径
 3. 提供全局路径访问接口
 
-配置文件结构 (tracking_path_config.json):
+配置文件结构 (productInfo_path_config.json):
 1. main_folder:
    - folder_type: 文件夹类型标识
    - path: 基础路径
@@ -44,11 +44,14 @@ def init():
     """
     初始化全局字典，从配置文件加载设置
     
-    读取tracking_path_config.json配置文件，解析其中的路径配置信息，
-    并更新全局字典供其他函数使用
+    读取productInfo_path_config.json配置文件，解析其中的路径配置信息，
+    并更新全局字典供其他函数使用。
     
     Returns:
-        bool: 初始化是否成功
+        bool: 初始化是否成功，成功返回True，失败返回False
+        
+    Raises:
+        Exception: 当配置文件读取失败或格式错误时抛出异常
     """
     global global_dic
     
@@ -84,6 +87,14 @@ def get(key):
     
     Returns:
         any: 对应的值，可能是文件路径或SQL查询语句，失败时返回None
+        
+    Note:
+        - 如果字典为空，会自动尝试重新初始化
+        - 特殊键处理：
+          * 'mode': 返回当前数据源模式
+          * 'config_path': 返回配置文件路径
+        - SQL模式：返回 "SELECT * FROM db_name.table_name" 格式的查询语句
+        - 本地模式：返回完整的文件路径
     """
     global global_dic
     
@@ -169,6 +180,9 @@ def set(key, value):
     Args:
         key (str): 要设置的键名
         value (any): 要设置的值
+        
+    Note:
+        此函数用于在运行时动态修改全局配置，谨慎使用
     """
     global global_dic
     global_dic[key] = value

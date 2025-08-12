@@ -9,7 +9,6 @@
                 "port": 3306,
                 "user": "DBA",
                 "password": "Abcd1234#",
-                "database": "data_prepared",
                 "charset": "utf8mb4"
             },
             "database2": {
@@ -17,7 +16,6 @@
                 "port": 3306,
                 "user": "root",
                 "password": "root",
-                "database": "data_prepared",
                 "charset": "utf8mb4"
             }
         }
@@ -40,7 +38,7 @@
         },
         {
             "folder_type": "config",
-            "path": "product_to_sql\\global_setting",
+            "path": "product_to_sql_new\\global_setting",
             "disk": "D"
         },
         {
@@ -93,27 +91,33 @@
         },
         {
             "data_type": "output_stock",
-            "sql_sheet": "stockholding"
+            "sql_sheet": "stockholding",
+            "database": "data_prepared_new"
         },
         {
             "data_type": "output_prodinfo",
-            "sql_sheet": "productinfo"
+            "sql_sheet": "productinfo",
+            "database": "data_prepared_new"
         },
         {
             "data_type": "output_future",
-            "sql_sheet": "futureholding"
+            "sql_sheet": "futureholding",
+            "database": "data_prepared_new"
         },
         {
             "data_type": "output_future_temp",
-            "sql_sheet": "futureholding_temp"
+            "sql_sheet": "futureholding_temp",
+            "database": "data_prepared_new"
         },
         {
             "data_type": "output_stock_temp",
-            "sql_sheet": "stockholding_temp"
+            "sql_sheet": "stockholding_temp",
+            "database": "data_prepared_new"
         },
         {
             "data_type": "output_prodinfo_temp",
-            "sql_sheet": "productinfo_temp"
+            "sql_sheet": "productinfo_temp",
+            "database": "data_prepared_new"
         }
     ]
 } 
