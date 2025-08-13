@@ -144,7 +144,9 @@ def renr_running_main():
                 tsql4=renrProduct_to_sql(True)
                 tsql4.InfoHolding_saving()
 if __name__ == '__main__':
-    xy_running_main()
+    rr_running_main()
+    xy_future_running_main()
+    renr_future_running_main()
 #     renr_future_running_main()
 #     print('000000000000000000000000000000000000000')
 #     xy_future_running_main()

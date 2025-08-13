@@ -110,12 +110,14 @@ def standardize_column_names_future(df):
         '买卖':'direction',
         'PosiDirection':'direction',
         '总持仓' : 'quantity',
-        'Potision':'quantity',
+        'Position':'quantity',
         '昨仓' : 'pre_quantity',
         'YdPosition':'pre_quantity',
         '今仓' : 'today_quantity',
+        'TodayPosition' :'today_quantity',
         '持仓均价': 'unit_cost',
         '持仓成本': 'cost',
+        'OpenCost':'cost',
         '合约价值' : 'mkt_value',
         '持仓盈亏' : 'profit',
         'PositionProfit':'profit',
@@ -260,8 +262,6 @@ class rrProduct_to_sql:
         df['valuation_date']=today
         df['product_code']=self.product_type
         df['update_time']=current_time
-        df['pct_chg']=df['pct_chg'].apply(lambda x: str(x)[:-1])
-        df['pct_chg']=df['pct_chg'].astype(float)/100
         df=df[['valuation_date','product_code','update_time']+df.columns.tolist()[:-3]]
         inputpath_configsql = glv.get('config_sql')
         if self.is_daily==True:
@@ -468,7 +468,6 @@ class xyProduct_to_sql:
         df = self.read_csv_file(inputpath_holding)
         df['当日涨幅'] = df['SettlementPrice'].astype(float) / df['PreSettlementPrice'].astype(float) - 1
         df = standardize_column_names_future(df)
-
         def direction_transfer(x):
             """
             转换多空方向编码
@@ -541,8 +540,6 @@ class xyProduct_to_sql:
         该方法依次调用股票持仓和产品信息的保存方法，
         如果某个步骤出现异常，会打印错误信息但继续执行其他步骤。
         """
-        self.stockHolding_saving()
-        self.InfoHolding_saving()
         try:
             self.stockHolding_saving()
         except:

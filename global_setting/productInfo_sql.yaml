@@ -58,6 +58,7 @@ future_temp:
       code: { type: String, length: 50 }
       product_code: { type: String, length: 50 }
       pct_chg: { type: Float }
+      price: { type: Float }
       mkt_value: { type: Float }
       direction: { type: String, length: 50 }
       quantity: { type: Float }
