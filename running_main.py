@@ -48,11 +48,11 @@ def rr_running_main():
             status_future = temptable_manage('future', product)
             stuatus_prodinfo = temptable_manage('prodinfo', product)
             if status_stock=='not_exist':
-                gt.table_manager(config_path,'stockholding_temp')
+                gt.table_manager(config_path,'data_prepared_new','stockholding_temp')
             if status_future=='not_exist':
-                gt.table_manager(config_path,'futureholding_temp')
+                gt.table_manager(config_path,'data_prepared_new','futureholding_temp')
             if stuatus_prodinfo =='not_exist':
-                gt.table_manager(config_path,'productinfo_temp')
+                gt.table_manager(config_path,'data_prepared_new','productinfo_temp')
         tsql=rrProduct_to_sql(product,False)
         tsql.rr_sql_saving_main()
         if current_time.hour > 15 or (current_time.hour == 15 and current_time.minute >= 30):
@@ -75,7 +75,7 @@ def xy_future_running_main():
         if current_time.hour < 9 or (current_time.hour == 9 and current_time.minute <= 15):
             status_future = temptable_manage('future', product)
             if status_future == 'not_exist':
-                gt.table_manager(config_path, 'futureholding_temp')
+                gt.table_manager(config_path,'data_prepared_new', 'futureholding_temp')
         tsql = xyProduct_to_sql(False)
         tsql.futureHolding_saving()
         if current_time.hour > 15 or (current_time.hour == 15 and current_time.minute >= 30):
@@ -90,7 +90,7 @@ def renr_future_running_main():
         if current_time.hour < 9 or (current_time.hour == 9 and current_time.minute <= 15):
             status_future = temptable_manage('future', product)
             if status_future == 'not_exist':
-                gt.table_manager(config_path, 'futureholding_temp')
+                gt.table_manager(config_path,'data_prepared_new', 'futureholding_temp')
         tsql = renrProduct_to_sql(False)
         tsql.futureHolding_saving()
         if current_time.hour > 15 or (current_time.hour == 15 and current_time.minute >= 30):
@@ -106,9 +106,9 @@ def xy_running_main():
             status_stock = temptable_manage('stock', product)
             stuatus_prodinfo = temptable_manage('prodinfo', product)
             if status_stock=='not_exist':
-                gt.table_manager(config_path,'stockholding_temp')
+                gt.table_manager(config_path,'data_prepared_new','stockholding_temp')
             if stuatus_prodinfo =='not_exist':
-                gt.table_manager(config_path,'productinfo_temp')
+                gt.table_manager(config_path,'data_prepared_new','productinfo_temp')
         tsql=xyProduct_to_sql(False)
         tsql.xy_sql_saving_main()
         if current_time.hour > 15 or (current_time.hour == 15 and current_time.minute >= 30):
@@ -129,9 +129,9 @@ def renr_running_main():
             status_stock = temptable_manage('stock', product)
             stuatus_prodinfo = temptable_manage('prodinfo', product)
             if status_stock=='not_exist':
-                gt.table_manager(config_path,'stockholding_temp')
+                gt.table_manager(config_path,'data_prepared_new','stockholding_temp')
             if stuatus_prodinfo =='not_exist':
-                gt.table_manager(config_path,'productinfo_temp')
+                gt.table_manager(config_path,'data_prepared_new','productinfo_temp')
         tsql=renrProduct_to_sql(False)
         tsql.renrui_sql_saving_main()
         if current_time.hour > 15 or (current_time.hour == 15 and current_time.minute >= 30):
